@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="hy">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ԲԵՆԴ — Վիդեո պորտֆոլիո</title>
+
+  <style>
+    :root{
+      --bg: #0b0c10;
+      --border: rgba(255,255,255,0.10);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.72);
+      --muted2: rgba(255,255,255,0.55);
+      --shadow: 0 20px 50px rgba(0,0,0,0.35);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body{
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 700px at 20% 0%, rgba(125, 140, 255, 0.16), transparent 55%),
+                  radial-gradient(900px 600px at 80% 10%, rgba(255, 120, 160, 0.12), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+    }
+
+    .wrap{ max-width: 1120px; margin: 0 auto; padding: 18px 16px 64px; }
+
+    /* Minimal header */
+    header{
+      padding: 18px 0 6px;
+    }
+    header h1{
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 0.9px;
+    }
+    header .sub{
+      margin-top: 6px;
+      color: var(--muted2);
+      font-size: 12px;
+    }
+
+    /* Sticky mini navigation (mobile friendly) */
+    .nav{
+      position: sticky;
+      top: 10px;
+      z-index: 5;
+      display:flex;
+      gap: 8px;
+      margin: 10px 0 0;
+      padding: 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(8px);
+    }
+    .nav a{
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+      font-size: 12px;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav a:hover{ background: rgba(255,255,255,0.08); }
+    @media (max-width: 520px){
+      .nav{ overflow-x:auto; white-space: nowrap; }
+    }
+
+    /* Hero */
+    .hero{
+      margin-top: 12px;
+      padding: 22px 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
+      box-shadow: var(--shadow);
+    }
+    .hero h2{
+      margin: 0 0 10px;
+      font-size: 22px;
+      letter-spacing: 0.2px;
+    }
+    .hero p{
+      margin: 0 0 12px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 14px;
+      max-width: 70ch;
+    }
+
+    /* Chips */
+    .chips{ display:flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .chip{
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    /* Sections */
+    section{ margin-top: 26px; }
+
+    /* Section header */
+    .section-head{
+      margin: 0 2px 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+    }
+    .section-head h3{
+      margin: 0;
+      font-size: 20px;
+      letter-spacing: 0.2px;
+    }
+    .section-head p{
+      margin: 6px 0 0;
+      color: var(--muted2);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    /* Grid */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 520px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+    }
+
+    .card-head{
+      padding: 10px 10px 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .kicker{
+      color: var(--muted2);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .title{
+      margin:0;
+      font-size: 14px;
+      line-height: 1.2;
+    }
+
+    /* Media wrapper */
+    .media{
+      width: 100%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .media iframe{
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display:block;
+    }
+    .r16x9{ aspect-ratio: 16 / 9; }
+    .r9x16{ aspect-ratio: 9 / 16; }
+
+    /* Keep vertical videos from feeling too huge */
+    .media.r9x16{
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    @media (max-width: 520px){
+      .media.r9x16{ max-width: 320px; }
+    }
+
+    .card-foot{
+      padding: 8px 10px 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    footer{
+      margin-top: 32px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      color: var(--muted2);
+      font-size: 12px;
+      display:flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* Mobile compact tuning */
+    @media (max-width: 520px){
+      .wrap { padding: 14px 12px 44px; }
+      .hero { padding: 16px 14px; }
+      .hero h2 { font-size: 18px; }
+      .hero p { font-size: 13px; }
+
+      .chips { gap: 6px; }
+      .chip { padding: 6px 9px; font-size: 12px; }
+
+      .section-head h3 { font-size: 18px; }
+      .section-head p { font-size: 12px; }
+
+      .kicker { font-size: 11px; }
+      .title { font-size: 13px; }
+
+      .card-head { padding: 9px 9px 7px; }
+      .card-foot { padding: 7px 9px 9px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header>
+      <h1>ԲԵՆԴ</h1>
+      <div class="sub">Վիդեո պորտֆոլիո (միայն հաճախորդների համար)</div>
+    </header>
+
+    <nav class="nav">
+      <a href="#highlights">Highlights</a>
+      <a href="#vocalists">Երգիչներ</a>
+      <a href="#performances">Կատարումներ</a>
+    </nav>
+
+    <div class="hero">
+      <h2>Կենդանի երաժշտություն՝ ձեր միջոցառման համար</h2>
+      <p>
+        Այս էջը նախատեսված է մեր կատարումները արագ դիտելու համար։ Սկզբում՝ կարճ ռիլլեր, հետո՝ երգիչներ, հետո՝ ընդհանուր ելույթներ։
+      </p>
+
+      <div class="section-head" style="border-bottom: none; padding-bottom: 0; margin: 12px 0 0;">
+        <h3 style="font-size:16px; margin-bottom:0;">Ժանրեր</h3>
+      </div>
+
+      <div class="chips">
+        <span class="chip">Երևանյան</span>
+        <span class="chip">Էստրադային</span>
+        <span class="chip">Հարսանեկան</span>
+        <span class="chip">Սիրային / հանգիստ</span>
+        <span class="chip">Ռուսական / Արտասահմանյան</span>
+        <span class="chip">Քավրներ</span>
+        <span class="chip">Թիթիզ իմպռովիզներ)</span>
+      </div>
+    </div>
+
+    <!-- ====================== SECTION 1 ====================== -->
+    <section id="highlights">
+      <div class="section-head">
+        <h3>Highlights — մեր vibe-ը</h3>
+        <p>4 կարճ Shorts՝ ընդհանուր տպավորության համար</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="card-head">
+            <div class="kicker">Հանգիստ</div>
+            <p class="title">ամեն բացվող առավոտ, ռուսական․․․</p>
+          </div>
+          <div class="media r9x16">
+            <iframe src="https://www.youtube.com/embed/QZylNmqo_PU" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="kicker">Ուրախ</div>
+            <p class="title">Պարային շարան</p>
+          </div>
+          <div class="media r9x16">
+            <iframe src="https://www.youtube.com/embed/cuAnM_95wts" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="kicker">Սիրային</div>
+            <p class="title">Դուետ</p>
+          </div>
+          <div class="media r9x16">
+            <iframe src="https://www.youtube.com/embed/t2IX2gmCN8U" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="kicker">Գործիքային</div>
+            <p class="title">Եղիշի պար, խորոված</p>
+          </div>
+          <div class="media r9x16">
+            <iframe src="https://www.youtube.com/embed/AUB7qhFdsmk" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== SECTION 2 ====================== -->
+    <section id="vocalists">
+      <div class="section-head">
+        <h3>Երգիչներ</h3>
+        <p>կարճ սոլո վիդեոներ՝ յուրաքանչյուր վոկալիստի կատարմամբ</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="card-head">
+            <div class="kicker">Սոնա Բադալյան</div>
+            <p class="title">հավես</p>
+          </div>
+          <div class="media r9x16">
+            <iframe src="https://www.youtube.com/embed/vNhDuAC6Vws" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="kicker">Հայկ Գալստյան</div>
+            <p class="title">քեֆ</p>
+          </div>
+          <div class="media r9x16">
+            <iframe src="https://www.youtube.com/embed/q952MhelMco" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="kicker">Հովհաննես Բաբախանյան</div>
+            <p class="title">մի տրամադրություն</p>
+          </div>
+          <div class="media r9x16">
+            <iframe src="https://www.youtube.com/embed/OYBCJpJ_S34" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== SECTION 3 ====================== -->
+    <section id="performances">
+      <div class="section-head">
+        <h3>Բենդի ընդհանուր կատարումներ</h3>
+        <p>ընդգրկված են տարբեր ժանրեր</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="card-head">
+            <div class="kicker">Բենդ</div>
+            <p class="title">Ամեն բացվող առավոտ</p>
+          </div>
+          <div class="media r16x9">
+            <iframe src="https://www.youtube.com/embed/JZgoKezwtkk" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="kicker">Բենդը 3 երգիչներով</div>
+            <p class="title">Աջ ու ձախ սիրուն աղջիկներ</p>
+          </div>
+          <div class="media r16x9">
+            <iframe src="https://www.youtube.com/embed/TrDC6od-WXU" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="kicker">Գործիքային</div>
+            <p class="title">Եղիշի պար, խորոված</p>
+          </div>
+          <div class="media r16x9">
+            <iframe src="https://www.youtube.com/embed/k6M6v6Fgh9Q" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="kicker">Բենդ</div>
+            <p class="title">Աննման աղջիկ</p>
+          </div>
+          <div class="media r9x16">
+            <iframe src="https://www.youtube.com/embed/xhUjpASiJ3o" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="kicker">Բենդ</div>
+            <p class="title">Սվեյ</p>
+          </div>
+          <div class="media r9x16">
+            <iframe src="https://www.youtube.com/embed/C4jdQH4rteg" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© ԲԵՆԴ — Վիդեո պորտֆոլիո</div>
+      <div>վիդեոները տարածման ենթակա չեն • Կիսվել միայն հաճախորդների հետ</div>
+    </footer>
+
+  </div>
+</body>
+</html>
