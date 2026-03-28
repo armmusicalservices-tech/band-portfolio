@@ -1,93 +1,112 @@
 <!doctype html>
 <html lang="hy">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ԲԵՆԴ — Վիդեո պորտֆոլիո</title>
 
   <style>
-    :root{
+    :root {
       --bg: #0b0c10;
-      --border: rgba(255,255,255,0.10);
-      --text: rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.72);
-      --muted2: rgba(255,255,255,0.55);
-      --shadow: 0 20px 50px rgba(0,0,0,0.35);
+      --border: rgba(255, 255, 255, 0.10);
+      --text: rgba(255, 255, 255, 0.92);
+      --muted: rgba(255, 255, 255, 0.72);
+      --muted2: rgba(255, 255, 255, 0.55);
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
       --radius: 18px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    body{
+    body {
       margin: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background: radial-gradient(1200px 700px at 20% 0%, rgba(125, 140, 255, 0.16), transparent 55%),
-                  radial-gradient(900px 600px at 80% 10%, rgba(255, 120, 160, 0.12), transparent 60%),
-                  var(--bg);
+        radial-gradient(900px 600px at 80% 10%, rgba(255, 120, 160, 0.12), transparent 60%),
+        var(--bg);
       color: var(--text);
     }
 
-    .wrap{ max-width: 1120px; margin: 0 auto; padding: 18px 16px 64px; }
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 18px 16px 64px;
+    }
 
     /* Minimal header */
-    header{
+    header {
       padding: 18px 0 6px;
     }
-    header h1{
+
+    header h1 {
       margin: 0;
       font-size: 18px;
       letter-spacing: 0.9px;
     }
-    header .sub{
+
+    header .sub {
       margin-top: 6px;
       color: var(--muted2);
       font-size: 12px;
     }
 
     /* Sticky mini navigation (mobile friendly) */
-    .nav{
+    .nav {
       position: sticky;
       top: 10px;
       z-index: 5;
-      display:flex;
+      display: flex;
       gap: 8px;
       margin: 10px 0 0;
       padding: 10px;
       border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: rgba(0, 0, 0, 0.35);
       backdrop-filter: blur(8px);
     }
-    .nav a{
+
+    .nav a {
       padding: 8px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: rgba(255, 255, 255, 0.04);
       font-size: 12px;
-      color: rgba(255,255,255,0.85);
+      color: rgba(255, 255, 255, 0.85);
       text-decoration: none;
       white-space: nowrap;
     }
-    .nav a:hover{ background: rgba(255,255,255,0.08); }
-    @media (max-width: 520px){
-      .nav{ overflow-x:auto; white-space: nowrap; }
+
+    .nav a:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    @media (max-width: 520px) {
+      .nav {
+        overflow-x: auto;
+        white-space: nowrap;
+      }
     }
 
     /* Hero */
-    .hero{
+    .hero {
       margin-top: 12px;
       padding: 22px 18px;
       border-radius: var(--radius);
       border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.04));
       box-shadow: var(--shadow);
     }
-    .hero h2{
+
+    .hero h2 {
       margin: 0 0 10px;
       font-size: 22px;
       letter-spacing: 0.2px;
     }
-    .hero p{
+
+    .hero p {
       margin: 0 0 12px;
       color: var(--muted);
       line-height: 1.55;
@@ -96,32 +115,42 @@
     }
 
     /* Chips */
-    .chips{ display:flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-    .chip{
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .chip {
       padding: 8px 10px;
       border-radius: 999px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,0.04);
+      background: rgba(255, 255, 255, 0.04);
       color: var(--muted);
       font-size: 13px;
       white-space: nowrap;
     }
 
     /* Sections */
-    section{ margin-top: 26px; }
+    section {
+      margin-top: 26px;
+    }
 
     /* Section header */
-    .section-head{
+    .section-head {
       margin: 0 2px 12px;
       padding-bottom: 10px;
-      border-bottom: 1px solid rgba(255,255,255,0.10);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.10);
     }
-    .section-head h3{
+
+    .section-head h3 {
       margin: 0;
       font-size: 20px;
       letter-spacing: 0.2px;
     }
-    .section-head p{
+
+    .section-head p {
       margin: 6px 0 0;
       color: var(--muted2);
       font-size: 13px;
@@ -129,99 +158,146 @@
     }
 
     /* Grid */
-    .grid{
-      display:grid;
+    .grid {
+      display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 14px;
     }
-    @media (max-width: 520px){
-      .grid{ grid-template-columns: 1fr; }
+
+    @media (max-width: 520px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
     }
 
-    .card{
+    .card {
       border-radius: var(--radius);
       border: 1px solid var(--border);
-      background: rgba(255,255,255,0.04);
+      background: rgba(255, 255, 255, 0.04);
       overflow: hidden;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
     }
 
-    .card-head{
+    .card-head {
       padding: 10px 10px 8px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
-    .kicker{
+
+    .kicker {
       color: var(--muted2);
       font-size: 12px;
       margin-bottom: 6px;
     }
-    .title{
-      margin:0;
+
+    .title {
+      margin: 0;
       font-size: 14px;
       line-height: 1.2;
     }
 
     /* Media wrapper */
-    .media{
+    .media {
       width: 100%;
-      background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
-      border-top: 1px solid rgba(255,255,255,0.05);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.03));
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
-    .media iframe{
+
+    .media iframe {
       width: 100%;
       height: 100%;
       border: 0;
-      display:block;
+      display: block;
     }
-    .r16x9{ aspect-ratio: 16 / 9; }
-    .r9x16{ aspect-ratio: 9 / 16; }
+
+    .r16x9 {
+      aspect-ratio: 16 / 9;
+    }
+
+    .r9x16 {
+      aspect-ratio: 9 / 16;
+    }
 
     /* Keep vertical videos from feeling too huge */
-    .media.r9x16{
+    .media.r9x16 {
       max-width: 420px;
       margin: 0 auto;
     }
-    @media (max-width: 520px){
-      .media.r9x16{ max-width: 320px; }
+
+    @media (max-width: 520px) {
+      .media.r9x16 {
+        max-width: 320px;
+      }
     }
 
-    .card-foot{
+    .card-foot {
       padding: 8px 10px 10px;
       color: var(--muted);
       font-size: 13px;
       line-height: 1.45;
     }
 
-    footer{
+    footer {
       margin-top: 32px;
       padding-top: 14px;
-      border-top: 1px solid rgba(255,255,255,0.10);
+      border-top: 1px solid rgba(255, 255, 255, 0.10);
       color: var(--muted2);
       font-size: 12px;
-      display:flex;
+      display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 10px;
     }
 
     /* Mobile compact tuning */
-    @media (max-width: 520px){
-      .wrap { padding: 14px 12px 44px; }
-      .hero { padding: 16px 14px; }
-      .hero h2 { font-size: 18px; }
-      .hero p { font-size: 13px; }
+    @media (max-width: 520px) {
+      .wrap {
+        padding: 14px 12px 44px;
+      }
 
-      .chips { gap: 6px; }
-      .chip { padding: 6px 9px; font-size: 12px; }
+      .hero {
+        padding: 16px 14px;
+      }
 
-      .section-head h3 { font-size: 18px; }
-      .section-head p { font-size: 12px; }
+      .hero h2 {
+        font-size: 18px;
+      }
 
-      .kicker { font-size: 11px; }
-      .title { font-size: 13px; }
+      .hero p {
+        font-size: 13px;
+      }
 
-      .card-head { padding: 9px 9px 7px; }
-      .card-foot { padding: 7px 9px 9px; }
+      .chips {
+        gap: 6px;
+      }
+
+      .chip {
+        padding: 6px 9px;
+        font-size: 12px;
+      }
+
+      .section-head h3 {
+        font-size: 18px;
+      }
+
+      .section-head p {
+        font-size: 12px;
+      }
+
+      .kicker {
+        font-size: 11px;
+      }
+
+      .title {
+        font-size: 13px;
+      }
+
+      .card-head {
+        padding: 9px 9px 7px;
+      }
+
+      .card-foot {
+        padding: 7px 9px 9px;
+      }
     }
   </style>
 </head>
@@ -243,7 +319,8 @@
     <div class="hero">
       <h2>Կենդանի երաժշտություն՝ ձեր միջոցառման համար</h2>
       <p>
-        Այս էջը նախատեսված է մեր կատարումները արագ դիտելու համար։ Սկզբում՝ կարճ ռիլլեր, հետո՝ երգիչներ, հետո՝ ընդհանուր ելույթներ։
+        Այս էջը նախատեսված է մեր կատարումները արագ դիտելու համար։ Սկզբում՝ կարճ ռիլլեր, հետո՝ երգիչներ, հետո՝ ընդհանուր
+        ելույթներ։
       </p>
 
       <div class="section-head" style="border-bottom: none; padding-bottom: 0; margin: 12px 0 0;">
@@ -269,6 +346,17 @@
       </div>
 
       <div class="grid">
+
+        <div class="card">
+          <div class="card-head">
+            <div class="kicker">Հանգիստ</div>
+            <p class="title">ամեն բացվող առավոտ, ռուսական․․․</p>
+          </div>
+          <div class="media r9x16">
+            <iframe src="https://www.youtube.com/embed/QZylNmqo_PU" allowfullscreen></iframe>
+          </div>
+        </div>
+
         <div class="card">
           <div class="card-head">
             <div class="kicker">Հանգիստ</div>
@@ -418,4 +506,5 @@
 
   </div>
 </body>
+
 </html>
